@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="application.c" open="1" top="0" tabpos="6">
+		<Cursor position="272" topLine="0" />
+	</File>
+	<File name="application.h" open="1" top="0" tabpos="7">
+		<Cursor position="198" topLine="0" />
+	</File>
+	<File name="gpsMonitor.c" open="1" top="1" tabpos="8">
+		<Cursor position="361" topLine="42" />
+	</File>
+	<File name="leds.c" open="1" top="0" tabpos="1">
+		<Cursor position="1184" topLine="19" />
+	</File>
+	<File name="leds.h" open="1" top="0" tabpos="2">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="main.c" open="1" top="0" tabpos="5">
+		<Cursor position="62" topLine="0" />
+	</File>
+	<File name="serialPort.c" open="1" top="0" tabpos="3">
+		<Cursor position="4034" topLine="124" />
+	</File>
+	<File name="serialPort.h" open="1" top="0" tabpos="4">
+		<Cursor position="356" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>

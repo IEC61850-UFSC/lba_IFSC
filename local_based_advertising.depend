@@ -1,0 +1,92 @@
+# depslib dependency file v1.0
+1349768269 source:/home/hector/devel/ifsc/local_based_advertising/main.c
+	<unistd.h>
+	"serialPort.h"
+	"leds.h"
+
+1348040806 /home/hector/devel/ifsc/local_based_advertising/led_control.h
+	"led_control.c"
+
+1348040812 /home/hector/devel/ifsc/local_based_advertising/led_control.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+
+1348040812 source:/home/hector/devel/ifsc/local_based_advertising/led_control.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+
+1348041973 /home/hector/devel/ifsc/local_based_advertising/teste.h
+
+1348041975 source:/home/hector/devel/ifsc/local_based_advertising/teste.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+
+1349777837 source:/home/hector/devel/ifsc/local_based_advertising/leds.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+
+1348681241 /home/hector/devel/ifsc/local_based_advertising/leds.h
+
+1348638878 /home/hector/devel/ifsc/local_based_advertising/serial.h
+
+1348290592 source:/home/hector/devel/ifsc/local_based_advertising/serial.c
+	<fcntl.h>
+	<signal.h>
+	<stdlib.h>
+	<termios.h>
+	<string.h>
+	<stdio.h>
+	<unistd.h>
+	"leds.h"
+	"serial.h"
+
+1349766900 source:/home/hector/devel/ifsc/local_based_advertising/application.c
+	<stdlib.h>
+	"leds.h"
+	"serialPort.h"
+
+1349766771 /home/hector/devel/ifsc/local_based_advertising/application.h
+
+1349766627 /home/hector/devel/ifsc/local_based_advertising/serialPort.h
+
+1349766864 source:/home/hector/devel/ifsc/local_based_advertising/serialPort.c
+	<fcntl.h>
+	<signal.h>
+	<stdlib.h>
+	<termios.h>
+	<string.h>
+	<stdio.h>
+	<unistd.h>
+	<pthread.h>
+	"leds.h"
+	"serialPort.h"
+	"application.h"
+
+1321951773 /usr/include/gps.h
+	<sys/types.h>
+	<sys/time.h>
+	<stdbool.h>
+	<inttypes.h>
+	<limits.h>
+	<time.h>
+	<signal.h>
+	<stdio.h>
+	<pthread.h>
+
+1349777763 source:/home/hector/devel/ifsc/local_based_advertising/gpsMonitor.c
+	<stdlib.h>
+	<stdio.h>
+	<unistd.h>
+	"/usr/include/gps.h"
+	"gpsMonitor.h"
+
+1349771882 /home/hector/devel/ifsc/local_based_advertising/gpsMonitor.h
+
