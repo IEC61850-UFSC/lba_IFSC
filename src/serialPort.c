@@ -75,6 +75,8 @@ void serial_port_close(int serial_port)
 {
 	tcsetattr(serial_port,TCSANOW,&options_original);
 	close(serial_port);
+	//pthread_cancel(message_handle_thread);
+    //pthread_join(message_handle_thread, NULL);
 }
 
 // Opens a USB virtual serial port at ttyUSB0.

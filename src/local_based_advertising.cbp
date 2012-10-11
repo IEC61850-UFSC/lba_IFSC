@@ -17,7 +17,10 @@
 				</Compiler>
 				<Linker>
 					<Add option="-lpthread" />
+					<Add option="-lgps" />
+					<Add library="/home/hector/devel/ifsc/lba_IFSC/referencia/gps/libgps.so" />
 					<Add directory="/usr/lib/i386-linux-gnu" />
+					<Add directory="/home/hector/devel/ifsc/lba_IFSC/referencia/gps" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -43,7 +46,11 @@
 		<Unit filename="application.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="gpsMonitor.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="include/application.h" />
+		<Unit filename="include/gps.h" />
 		<Unit filename="include/gpsMonitor.h" />
 		<Unit filename="include/leds.h" />
 		<Unit filename="include/serialPort.h" />

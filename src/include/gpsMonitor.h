@@ -3,6 +3,6 @@
 
 void gpsStart(void);
 void gpsStop(void);
-void gpsDebugDump(struct gps_data_t *gpsdata);
+//void gpsDebugDump(struct gps_data_t *gpsdata);
 
 #endif // GPSMONITOR_H_INCLUDED

@@ -1,10 +1,12 @@
 #include <unistd.h>
 #include "include/serialPort.h"
 #include "include/leds.h"
+#include "include/gpsMonitor.h"
 
 int main(void){
 
     serialPortStart();
+    gpsStart();
 
     for (;;)
 	{

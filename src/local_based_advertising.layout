@@ -2,15 +2,27 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="application.c" open="1" top="0" tabpos="1">
-		<Cursor position="38" topLine="0" />
+		<Cursor position="277" topLine="0" />
+	</File>
+	<File name="gpsMonitor.c" open="1" top="1" tabpos="5">
+		<Cursor position="2538" topLine="61" />
+	</File>
+	<File name="include/gps.h" open="1" top="0" tabpos="6">
+		<Cursor position="35522" topLine="955" />
+	</File>
+	<File name="include/gpsMonitor.h" open="0" top="0" tabpos="0">
+		<Cursor position="107" topLine="0" />
+	</File>
+	<File name="include/serialPort.h" open="0" top="0" tabpos="0">
+		<Cursor position="95" topLine="0" />
 	</File>
 	<File name="leds.c" open="1" top="0" tabpos="2">
 		<Cursor position="0" topLine="15" />
 	</File>
 	<File name="main.c" open="1" top="0" tabpos="3">
-		<Cursor position="70" topLine="0" />
+		<Cursor position="109" topLine="0" />
 	</File>
-	<File name="serialPort.c" open="1" top="1" tabpos="4">
-		<Cursor position="777" topLine="16" />
+	<File name="serialPort.c" open="1" top="0" tabpos="4">
+		<Cursor position="2328" topLine="59" />
 	</File>
 </CodeBlocks_layout_file>
