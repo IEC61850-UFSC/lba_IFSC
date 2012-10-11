@@ -1,2 +1,0 @@
-#define CENTURY_BASE	2000
-#define LEAPSECOND_NOW	16
