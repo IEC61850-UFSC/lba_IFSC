@@ -162,14 +162,16 @@
 
 1349766771 /home/hector/devel/ifsc/lba_IFSC/src/include/application.h
 
-1349929319 source:/home/hector/devel/ifsc/lba_IFSC/src/gpsMonitor.c
+1350121995 source:/home/hector/devel/ifsc/lba_IFSC/src/gpsMonitor.c
 	<stdlib.h>
 	<stdio.h>
 	<unistd.h>
+	<errno.h>
 	"include/gps.h"
 	"include/gpsMonitor.h"
+	"include/socket.h"
 
-1349926325 /home/hector/devel/ifsc/lba_IFSC/src/include/gpsMonitor.h
+1350070559 /home/hector/devel/ifsc/lba_IFSC/src/include/gpsMonitor.h
 
 1349921622 /home/hector/devel/ifsc/lba_IFSC/src/include/gps.h
 	<sys/types.h>
@@ -181,4 +183,18 @@
 	<signal.h>
 	<stdio.h>
 	<pthread.h>
+
+1350137181 source:/home/hector/devel/ifsc/lba_IFSC/src/socket.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<netdb.h>
+	<time.h>
+	<pthread.h>
+	<unistd.h>
+	"include/socket.h"
+
+1350130799 /home/hector/devel/ifsc/lba_IFSC/src/include/socket.h
 

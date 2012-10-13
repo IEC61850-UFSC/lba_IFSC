@@ -54,6 +54,7 @@
 		<Unit filename="include/gpsMonitor.h" />
 		<Unit filename="include/leds.h" />
 		<Unit filename="include/serialPort.h" />
+		<Unit filename="include/socket.h" />
 		<Unit filename="leds.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -61,6 +62,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="serialPort.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="socket.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>

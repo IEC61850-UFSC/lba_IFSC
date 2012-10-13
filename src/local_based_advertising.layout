@@ -4,17 +4,20 @@
 	<File name="application.c" open="1" top="0" tabpos="1">
 		<Cursor position="277" topLine="0" />
 	</File>
-	<File name="gpsMonitor.c" open="1" top="1" tabpos="5">
-		<Cursor position="2538" topLine="61" />
+	<File name="gpsMonitor.c" open="1" top="0" tabpos="5">
+		<Cursor position="427" topLine="0" />
 	</File>
-	<File name="include/gps.h" open="1" top="0" tabpos="6">
-		<Cursor position="35522" topLine="955" />
+	<File name="include/gps.h" open="0" top="0" tabpos="6">
+		<Cursor position="34636" topLine="1009" />
 	</File>
-	<File name="include/gpsMonitor.h" open="0" top="0" tabpos="0">
-		<Cursor position="107" topLine="0" />
+	<File name="include/gpsMonitor.h" open="1" top="0" tabpos="6">
+		<Cursor position="122" topLine="0" />
 	</File>
 	<File name="include/serialPort.h" open="0" top="0" tabpos="0">
 		<Cursor position="95" topLine="0" />
+	</File>
+	<File name="include/socket.h" open="1" top="0" tabpos="8">
+		<Cursor position="236" topLine="0" />
 	</File>
 	<File name="leds.c" open="1" top="0" tabpos="2">
 		<Cursor position="0" topLine="15" />
@@ -23,6 +26,9 @@
 		<Cursor position="109" topLine="0" />
 	</File>
 	<File name="serialPort.c" open="1" top="0" tabpos="4">
-		<Cursor position="2328" topLine="59" />
+		<Cursor position="2328" topLine="80" />
+	</File>
+	<File name="socket.c" open="1" top="1" tabpos="7">
+		<Cursor position="3461" topLine="113" />
 	</File>
 </CodeBlocks_layout_file>
