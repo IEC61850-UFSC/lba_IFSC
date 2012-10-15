@@ -136,7 +136,8 @@ void serial_port_write(char *write_buffer, int serial_port)
 // Closes the port, resets the terminal, and exits the program.
 void  sigint_handler(int sig, int serial_port)
 {
-	serial_port_close(serial_port);
+	//serial_port_close(serial_port);
+	applicationStop(serial_port);
 	exit (sig);
 }
 
