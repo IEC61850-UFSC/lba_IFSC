@@ -81,5 +81,6 @@ int read_socket(int fd, char *buffer){
         n++;
     }while(strcmp(chr_rcv,"\n") != 0);
     buffer[n]='\0';
+    printf("%s\n",buffer);
     return n;
 }

@@ -13,6 +13,6 @@ void applicationStop(int serial_port){
     led_control(0, 0);
     led_control(1, 0);
     serial_port_close(serial_port);
-    gpsStop();
+    //gpsStop();
     exit(EXIT_SUCCESS);
 }

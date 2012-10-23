@@ -3,16 +3,16 @@
 #include "include/leds.h"
 #include "include/gpsMonitor.h"
 
-int main(void){
+int main(int argc, char *argv[]){
 
     serialPortStart();
     gpsStart();
 
     for (;;)
 	{
-		led_control(1, 1);
-		sleep(1);
-		led_control(1, 0);
+		//led_control(1, 1);
+		//sleep(1);
+		//led_control(1, 0);
 		sleep(1);
 	}
 	return 0;

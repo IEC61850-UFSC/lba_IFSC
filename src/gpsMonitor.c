@@ -22,7 +22,7 @@ static int gps_socket_fd;
 //na pasta especificada pelo parametro arg->destination_path+indicie.
 int gpsMessageTask(void *arg){
 
-    int n,i;//,j; //Variaveis auxiliares.
+    int n,i,j; //Variaveis auxiliares.
     char *w_buffer;
     char lat[20],lon[20];
     struct gps_socket_arg *args = (struct gps_socket_arg  *)arg;  //Structura onde estão os argumentos da função.
@@ -39,7 +39,6 @@ int gpsMessageTask(void *arg){
 	for(;;)
 	{
         n = read_socket(args->fd,gps_msg);
-        printf("%s\n",gps_msg);
 
         if(gps_msg[10]=='T' && gps_msg[11]=='P' && gps_msg[12]=='V'){
             for(i = 86; i <=104;i++){
@@ -59,10 +58,11 @@ int gpsMessageTask(void *arg){
                 break;
         }
         sleep(1);
-        //j++;
-        //if (j>10){
-            //w_buffer = "?WATCH={\"enable\":true,\"json\":true}";
-        //}
+        j++;
+        if (j>500){
+            w_buffer = "?WATCH={\"enable\":true,\"json\":true}";
+            j = 0;
+        }
 	}
     gpsStop();
 	return 0;
@@ -94,6 +94,7 @@ void gpsStop(void){
     printf("GPS STOP\n");
     //Disable watch
     w_buffer = "?WATCH={\"enable\":false}";
+    //?WATCH={"enable":false}
 	write(gps_socket_fd,w_buffer,strlen(w_buffer));
 	//Close socket with GPSd
 	close(gps_socket_fd);

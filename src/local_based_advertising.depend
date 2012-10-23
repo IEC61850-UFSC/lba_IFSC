@@ -125,7 +125,7 @@
 
 1349766771 /home/hector/devel/ifsc/lba_IFSC/application.h
 
-1349926236 source:/home/hector/devel/ifsc/lba_IFSC/src/application.c
+1350544922 source:/home/hector/devel/ifsc/lba_IFSC/src/application.c
 	<stdlib.h>
 	"include/leds.h"
 	"include/serialPort.h"
@@ -133,7 +133,7 @@
 
 1348681241 /home/hector/devel/ifsc/lba_IFSC/src/include/leds.h
 
-1349925608 /home/hector/devel/ifsc/lba_IFSC/src/include/serialPort.h
+1350688542 /home/hector/devel/ifsc/lba_IFSC/src/include/serialPort.h
 
 1349777837 source:/home/hector/devel/ifsc/lba_IFSC/src/leds.c
 	<stdio.h>
@@ -141,19 +141,20 @@
 	<string.h>
 	<unistd.h>
 
-1349926464 source:/home/hector/devel/ifsc/lba_IFSC/src/main.c
+1350688527 source:/home/hector/devel/ifsc/lba_IFSC/src/main.c
 	<unistd.h>
 	"include/serialPort.h"
 	"include/leds.h"
 	"include/gpsMonitor.h"
 
-1350260189 source:/home/hector/devel/ifsc/lba_IFSC/src/serialPort.c
+1350685975 source:/home/hector/devel/ifsc/lba_IFSC/src/serialPort.c
 	<fcntl.h>
 	<signal.h>
 	<stdlib.h>
 	<termios.h>
 	<string.h>
 	<stdio.h>
+	<time.h>
 	<unistd.h>
 	<pthread.h>
 	"include/leds.h"
@@ -162,7 +163,7 @@
 
 1349766771 /home/hector/devel/ifsc/lba_IFSC/src/include/application.h
 
-1350266465 source:/home/hector/devel/ifsc/lba_IFSC/src/gpsMonitor.c
+1350687747 source:/home/hector/devel/ifsc/lba_IFSC/src/gpsMonitor.c
 	<stdlib.h>
 	<stdio.h>
 	<unistd.h>
@@ -186,7 +187,7 @@
 	<stdio.h>
 	<pthread.h>
 
-1350255241 source:/home/hector/devel/ifsc/lba_IFSC/src/socket.c
+1350448013 source:/home/hector/devel/ifsc/lba_IFSC/src/socket.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

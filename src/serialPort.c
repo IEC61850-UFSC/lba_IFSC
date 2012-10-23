@@ -35,13 +35,14 @@
 #include <termios.h>
 #include <string.h>
 #include <stdio.h>
+#include <time.h>
 #include <unistd.h>
 #include <pthread.h>
 #include "include/leds.h"
 #include "include/serialPort.h"
 #include "include/application.h"
 
-static const char *PORT_NAME = "/dev/ttyO2";
+static const char *PORT_NAME = "/dev/ttyUSB0";
 static pthread_t message_handle_thread; //Variavel que aponta a thread.
 static int serial_port;
 
@@ -51,6 +52,11 @@ static struct termios options_original;
 void serialMessageTask(void){
     int chars_read;
     char read_buffer[MAX_COMMAND_LENGTH + 1] = {0};
+    time_t time_start, time_now;
+    double clk_diff, at_time_out = 3;
+
+    //Get the time to start;
+    time(&time_start);
 
     for (;;)
 	{
@@ -58,12 +64,21 @@ void serialMessageTask(void){
 		{
 			// Read received data into the buffer
 			// up to but not including the buffer's terminating null.
-
 			chars_read = serial_port_read(read_buffer, MAX_COMMAND_LENGTH,serial_port);
 			if (chars_read > 0)
 			{
 				// Data was read.
 				onCommand(read_buffer, chars_read, serial_port);
+			}
+			//Get the time now;
+			time(&time_now);
+			//Calculate the difference
+			clk_diff = difftime(time_now,time_start);
+			if(clk_diff > at_time_out){
+			    //Write "AT" command
+			    serial_port_write("at\r",serial_port);
+			    //Get the time to start;
+                time(&time_start);
 			}
 		}
 		// The application can perform other tasks here.
@@ -93,14 +108,14 @@ int serial_port_open(void)
 	  printf("Serial Port open\n");
 	  tcgetattr(serial_port,&options_original);
  	  tcgetattr(serial_port, &options);
-	  cfsetispeed(&options, B115200);
-	  cfsetospeed(&options, B115200);
+	  cfsetispeed(&options, B57600);
+	  cfsetospeed(&options, B57600);
 	  options.c_cflag |= (CLOCAL | CREAD);
 	  options.c_lflag |= ICANON;
 	  tcsetattr(serial_port, TCSANOW, &options);
   }
   else
-	  printf("Unable to open /dev/ttyUSB0\n");
+	  printf("Unable to open %s\n",PORT_NAME);
   return (serial_port);
 }
 
@@ -153,6 +168,7 @@ void onCommand(char *read_buffer, int chars_read, int serial_port)
 		led_control(0, 1);
 		serial_port_write("led1 is on\r\n",serial_port);
 		printf("led1 is on\r\n");
+
 	}
 	else if (strstr(read_buffer, "led1off") != NULL)
 	{
@@ -166,7 +182,8 @@ void onCommand(char *read_buffer, int chars_read, int serial_port)
 	}
 	else
 	{
-		// Ignore undefined commands.
+		//print everything else.
+		printf("%s\n",read_buffer);
 	}
 }
 
@@ -187,9 +204,9 @@ void serialPortStart(void){
 
 		signal (SIGINT, (void*)sigint_handler);
 
-		serial_port_write("USB virtual serial port test program\r\n",serial_port);
-		serial_port_write("To control the usr0 LED, type led1on or led1off and press <Enter>\r\n",serial_port);
-		serial_port_write("To end the remote application, type closeapp and press <Enter> \r\n",serial_port);
+		//serial_port_write("USB virtual serial port test program\r\n",serial_port);
+		//serial_port_write("To control the usr0 LED, type led1on or led1off and press <Enter>\r\n",serial_port);
+		//serial_port_write("To end the remote application, type closeapp and press <Enter> \r\n",serial_port);
 
 		printf("Waiting to receive commands...\n");
 		printf("Press Ctrl+C to exit the program.\n");

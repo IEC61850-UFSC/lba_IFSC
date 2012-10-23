@@ -2,33 +2,33 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="application.c" open="1" top="0" tabpos="1">
-		<Cursor position="302" topLine="0" />
+		<Cursor position="139" topLine="0" />
 	</File>
-	<File name="gpsMonitor.c" open="1" top="1" tabpos="5">
-		<Cursor position="1159" topLine="26" />
+	<File name="gpsMonitor.c" open="1" top="0" tabpos="5">
+		<Cursor position="2042" topLine="78" />
 	</File>
 	<File name="include/gps.h" open="0" top="0" tabpos="6">
 		<Cursor position="34636" topLine="1009" />
 	</File>
-	<File name="include/gpsMonitor.h" open="1" top="0" tabpos="6">
+	<File name="include/gpsMonitor.h" open="0" top="0" tabpos="6">
 		<Cursor position="152" topLine="0" />
 	</File>
-	<File name="include/serialPort.h" open="1" top="0" tabpos="9">
-		<Cursor position="322" topLine="0" />
+	<File name="include/serialPort.h" open="1" top="0" tabpos="7">
+		<Cursor position="96" topLine="0" />
 	</File>
-	<File name="include/socket.h" open="1" top="0" tabpos="8">
+	<File name="include/socket.h" open="0" top="0" tabpos="8">
 		<Cursor position="60" topLine="0" />
 	</File>
 	<File name="leds.c" open="1" top="0" tabpos="2">
 		<Cursor position="0" topLine="15" />
 	</File>
 	<File name="main.c" open="1" top="0" tabpos="3">
-		<Cursor position="109" topLine="0" />
+		<Cursor position="144" topLine="0" />
 	</File>
-	<File name="serialPort.c" open="1" top="0" tabpos="4">
-		<Cursor position="2206" topLine="61" />
+	<File name="serialPort.c" open="1" top="1" tabpos="4">
+		<Cursor position="1862" topLine="49" />
 	</File>
-	<File name="socket.c" open="1" top="0" tabpos="7">
-		<Cursor position="2281" topLine="59" />
+	<File name="socket.c" open="1" top="0" tabpos="6">
+		<Cursor position="2530" topLine="54" />
 	</File>
 </CodeBlocks_layout_file>

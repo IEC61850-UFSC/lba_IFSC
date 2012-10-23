@@ -2,6 +2,7 @@
 #define SERIALPORT_H_INCLUDED
 
 #define MAX_COMMAND_LENGTH 10
+//extern const char *PORT_NAME;
 
 void serial_port_close(int serial_port);
 int serial_port_open(void);
