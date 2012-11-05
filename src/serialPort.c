@@ -42,9 +42,9 @@
 #include "include/serialPort.h"
 #include "include/application.h"
 
-static const char *PORT_NAME = "/dev/ttyUSB0";
+static const char *PORT_NAME = "/dev/ttyO2";
 static pthread_t message_handle_thread; //Variavel que aponta a thread.
-static int serial_port;
+int serial_port;
 
 static struct termios options_original;
 
@@ -52,16 +52,12 @@ static struct termios options_original;
 void serialMessageTask(void){
     int chars_read;
     char read_buffer[MAX_COMMAND_LENGTH + 1] = {0};
-    time_t time_start, time_now;
-    double clk_diff, at_time_out = 3;
-
-    //Get the time to start;
-    time(&time_start);
 
     for (;;)
 	{
 		if (serial_port != -1)
 		{
+			#if 1
 			// Read received data into the buffer
 			// up to but not including the buffer's terminating null.
 			chars_read = serial_port_read(read_buffer, MAX_COMMAND_LENGTH,serial_port);
@@ -70,16 +66,7 @@ void serialMessageTask(void){
 				// Data was read.
 				onCommand(read_buffer, chars_read, serial_port);
 			}
-			//Get the time now;
-			time(&time_now);
-			//Calculate the difference
-			clk_diff = difftime(time_now,time_start);
-			if(clk_diff > at_time_out){
-			    //Write "AT" command
-			    serial_port_write("at\r",serial_port);
-			    //Get the time to start;
-                time(&time_start);
-			}
+			#endif
 		}
 		// The application can perform other tasks here.
 	}
@@ -90,8 +77,6 @@ void serial_port_close(int serial_port)
 {
 	tcsetattr(serial_port,TCSANOW,&options_original);
 	close(serial_port);
-	//pthread_cancel(message_handle_thread);
-    //pthread_join(message_handle_thread, NULL);
 }
 
 // Opens a USB virtual serial port at ttyUSB0.
@@ -188,15 +173,15 @@ void onCommand(char *read_buffer, int chars_read, int serial_port)
 }
 
 void serialPortStart(void){
-    //enable system to write on leds
-    led_initialize();
     //enable system to write and read serial port (/dev/ttyO2)
 	serial_port = serial_port_open();
 
+	#if 1
 	//Create a thread that handle received commands.
     pthread_create(&message_handle_thread, NULL,
                         (void * (*)(void *))serialMessageTask,
 						(void*)NULL);
+    #endif
 
 	if (serial_port != -1)
 	{
@@ -208,7 +193,7 @@ void serialPortStart(void){
 		//serial_port_write("To control the usr0 LED, type led1on or led1off and press <Enter>\r\n",serial_port);
 		//serial_port_write("To end the remote application, type closeapp and press <Enter> \r\n",serial_port);
 
-		printf("Waiting to receive commands...\n");
+		//printf("Waiting to receive commands...\n");
 		printf("Press Ctrl+C to exit the program.\n");
 
 	}

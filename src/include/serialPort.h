@@ -3,7 +3,7 @@
 
 #define MAX_COMMAND_LENGTH 10
 //extern const char *PORT_NAME;
-
+extern int serial_port;
 void serial_port_close(int serial_port);
 int serial_port_open(void);
 int serial_port_read(char *read_buffer, size_t max_chars_to_read, int serial_port);

@@ -4,9 +4,11 @@
 #include <errno.h>
 #include <string.h>
 #include <pthread.h>
-#include "include/gps.h"
+//#include "include/gps.h"
 #include "include/gpsMonitor.h"
 #include "include/socket.h"
+#include "include/serialPort.h"
+#include "include/application.h"
 
 struct gps_socket_arg {    /* strutura de argumentos para a thread */
     int      fd;                 /* file descriptor do socket */
@@ -14,7 +16,7 @@ struct gps_socket_arg {    /* strutura de argumentos para a thread */
 };
 
 static pthread_t gps_report_handle_thread; //Variavel que aponta a thread.
-static char *gps_msg;
+static char gps_msg[MAX_GPSD_MSG_LENGHT];
 static int gps_socket_fd;
 
 #if 1
@@ -24,7 +26,7 @@ int gpsMessageTask(void *arg){
 
     int n,i,j; //Variaveis auxiliares.
     char *w_buffer;
-    char lat[20],lon[20];
+    char lat[21],lon[21];
     struct gps_socket_arg *args = (struct gps_socket_arg  *)arg;  //Structura onde estão os argumentos da função.
 
     //Reading Version Tag
@@ -41,11 +43,11 @@ int gpsMessageTask(void *arg){
         n = read_socket(args->fd,gps_msg);
 
         if(gps_msg[10]=='T' && gps_msg[11]=='P' && gps_msg[12]=='V'){
-            for(i = 86; i <=104;i++){
+            for(i = 86; i <=105;i++){
                 lat[i-86]=gps_msg[i];
             }
             lat[19]='\0';
-            for(i = 106; i <=124;i++){
+            for(i = 106; i <=125;i++){
                 lon[i-106]=gps_msg[i];
             }
             lon[19]='\0';
@@ -53,9 +55,10 @@ int gpsMessageTask(void *arg){
             printf("\nHOLA\n");
         }
         else if(gps_msg[10]=='D' && gps_msg[11]=='E' && gps_msg[12]=='V'){
-            printf("GPSD FOI DESATIVADO = %c\n",gps_msg[52]);
-            if(gps_msg[52] =='0')
+            if(gps_msg[52] =='0'){
+                printf("GPSD FOI DESATIVADO = %c\n",gps_msg[52]);
                 break;
+            }
         }
         sleep(1);
         j++;
@@ -64,7 +67,7 @@ int gpsMessageTask(void *arg){
             j = 0;
         }
 	}
-    gpsStop();
+    applicationStop(serial_port);
 	return 0;
 }
 #endif
@@ -78,7 +81,7 @@ void gpsStart(void){
     gps_thread_arguments[0].fd = gps_socket_fd;
     gps_thread_arguments[0].destination_path = "HOLA";
 
-    gps_msg = (char*)malloc(MAX_GPSD_MSG_LENGHT);
+    //gps_msg = (char*)malloc(MAX_GPSD_MSG_LENGHT);
 
     // Cria uma thread para monitorar a conexão
 	pthread_create(&gps_report_handle_thread, NULL,
@@ -100,5 +103,4 @@ void gpsStop(void){
 	close(gps_socket_fd);
 	//free(gps_msg);
 	system("killall -9 gpsd");
-
 }
