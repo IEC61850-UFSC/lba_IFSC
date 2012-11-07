@@ -5,6 +5,12 @@
 #define GPSD_PORT 2947
 #define MAX_GPSD_MSG_LENGHT 1500
 
+typedef struct{
+    double lat;
+    double lon;
+}GPS_LAT_LON;
+
+extern GPS_LAT_LON car_position;
 void gpsStart(void);
 void gpsStop(void);
 

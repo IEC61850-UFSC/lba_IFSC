@@ -1,64 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
-      #map_canvas { height: 100% }
+      #map_canvas { height: 50% }
+      
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas_2 { height: 50% }
     </style>
     <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs0eYnrEUuM8ourBM6EcYb0aovp0Ax2As&sensor=true&region=BR">
-     // src="https://maps.googleapis.com/maps/api/js?sensor=true">
+      	    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs0eYnrEUuM8ourBM6EcYb0aovp0Ax2As&sensor=true&region=BR">     
     </script>
     <script type="text/javascript">
-      function initialize() {
+	var map;
+	var map_2
+	var marker;
+	var marker_2
+	  
+      	function initialize() {
 
-        var mapOptions = {
-          center: new google.maps.LatLng(-27.596816401,-48.522860588),
-          zoom: 17,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+        	var mapOptions = {
+          		center: new google.maps.LatLng(-27.596816401,-48.522860588),
+			zoom: 17,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+        	};
 
  	
- 	var map = new google.maps.Map(document.getElementById('map_canvas'),
-      	mapOptions);	
+ 		map = new google.maps.Map(document.getElementById('map_canvas'),mapOptions);	
 	
-	var marker = new google.maps.Marker({
-	 position: map.getCenter(),
-	 map: map,
-	 title: 'Click to zoom'
-	});
-
+		marker = new google.maps.Marker({
+			position: map.getCenter(),
+			map: map,
+			title: 'Teste_mapa_1'
+		});
 	
-	var mapOptions_2 = {
-          center: new google.maps.LatLng(-27.596816401,-48.522860588),
-          zoom: 18,
-          mapTypeId: google.maps.MapTypeId.SATELLITE
-        };
+		var mapOptions_2 = {
+			center: new google.maps.LatLng(-27.596816401,-48.522860588),
+			zoom: 18,
+			mapTypeId: google.maps.MapTypeId.SATELLITE
+		};
 
-	var map_2 = new google.maps.Map(document.getElementById('map_canvas_2'),
-      	mapOptions_2);
-	var marker_2 = new google.maps.Marker({
-	 position: map_2.getCenter(),
-	 map: map_2,
-	 title: 'Click to zoom'
-	});
+		map_2 = new google.maps.Map(document.getElementById('map_canvas_2'),mapOptions_2);
+    	  	
+		marker_2 = new google.maps.Marker({
+			position: map_2.getCenter(),
+			map: map_2,
+			title: 'Teste_mapa_2'
+		});
 
 
-	//google.maps.event.addListener(map, 'center_changed', function() {
-	    // 3 seconds after the center of the map has changed, pan back to the
-	    // marker.	    
-	    //window.setTimeout(function() {reload();}, 5000);
-	  //});
-
-      }
+		//google.maps.event.addListener(map, 'center_changed', function() {
+		// 3 seconds after the center of the map has changed, pan back to the
+		// marker.	    
+		window.setTimeout(function() {reload();}, 25000);
+		//});
+     }
+     
      function reload(){
-	document.location.reload(true)
-    }
+	 	document.location.reload(true)
+     }
     </script>
   </head>
   <body onload="initialize()">
-    <div id="map_canvas" style="width:50%; height:50%"></div>    
-    <div id="map_canvas_2" style="width:50%; height:50%"></div>
+    <div id="map_canvas" style="width:100%; height:50%"></div>    
+    <div id="map_canvas_2" style="width:100%; height:50%"></div>
   </body>
 </html>

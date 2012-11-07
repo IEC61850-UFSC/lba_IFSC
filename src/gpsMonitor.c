@@ -4,20 +4,26 @@
 #include <errno.h>
 #include <string.h>
 #include <pthread.h>
+#include <time.h>
 //#include "include/gps.h"
 #include "include/gpsMonitor.h"
 #include "include/socket.h"
 #include "include/serialPort.h"
 #include "include/application.h"
+#include "include/video.h"
+
+#define TIMEOUT 30
 
 struct gps_socket_arg {    /* strutura de argumentos para a thread */
     int      fd;                 /* file descriptor do socket */
     char*    destination_path;   /* pasta onde vão ser salvadas as imagens */
 };
 
+GPS_LAT_LON car_position;
 static pthread_t gps_report_handle_thread; //Variavel que aponta a thread.
 static char gps_msg[MAX_GPSD_MSG_LENGHT];
 static int gps_socket_fd;
+time_t start, end;
 
 #if 1
 //Thread que lee o socket e caso uma imagem seja capturada a salva
@@ -25,8 +31,9 @@ static int gps_socket_fd;
 int gpsMessageTask(void *arg){
 
     int n,i,j; //Variaveis auxiliares.
+    //double int_lat,int_lon;
     char *w_buffer;
-    char lat[21],lon[21];
+    char lat[15],lon[15];
     struct gps_socket_arg *args = (struct gps_socket_arg  *)arg;  //Structura onde estão os argumentos da função.
 
     //Reading Version Tag
@@ -43,16 +50,28 @@ int gpsMessageTask(void *arg){
         n = read_socket(args->fd,gps_msg);
 
         if(gps_msg[10]=='T' && gps_msg[11]=='P' && gps_msg[12]=='V'){
-            for(i = 86; i <=105;i++){
-                lat[i-86]=gps_msg[i];
+            for(i = 92; i <=104;i++){
+                lat[i-92]=gps_msg[i];
             }
-            lat[19]='\0';
-            for(i = 106; i <=125;i++){
-                lon[i-106]=gps_msg[i];
+            lat[14]='\0';
+            for(i = 112; i <=124;i++){
+                lon[i-112]=gps_msg[i];
             }
-            lon[19]='\0';
-            printf("lat =%s\nlon =%s\n",lat,lon);
-            printf("\nHOLA\n");
+            lon[14]='\0';
+            car_position.lat = atof(lat);
+            car_position.lon = atof(lon);
+
+            end = time(NULL);
+            //Play the video if necessary
+            if((difftime(end,start)) > TIMEOUT){
+                videoPlay(car_position.lat,car_position.lon);
+                start = time (NULL);
+            }
+
+            //printf("lat =%s\nlon =%s\n",lat,lon);
+            //printf ("%ld hours since January 1, 1970\n", start);
+
+            //printf("int_lat =%lf\nint_lon =%lf\n",car_position.lat,car_position.lon);
         }
         else if(gps_msg[10]=='D' && gps_msg[11]=='E' && gps_msg[12]=='V'){
             if(gps_msg[52] =='0'){
@@ -83,6 +102,7 @@ void gpsStart(void){
 
     //gps_msg = (char*)malloc(MAX_GPSD_MSG_LENGHT);
 
+    start = time (NULL);
     // Cria uma thread para monitorar a conexão
 	pthread_create(&gps_report_handle_thread, NULL,
                    (void * (*)(void *))gpsMessageTask,
